@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Blookly.Web/Blookly.Web.csproj" />
+    <Project Path="src/Bookly.Api/Blookly.Api.csproj" />
+    <Project Path="src/Bookly.Application/Blookly.Application.csproj" />
+    <Project Path="src/Bookly.Domain/Blookly.Domain.csproj" />
+    <Project Path="src/Bookly.Infrastructure/Blookly.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Bookly.IntegrationTest/Blookly.IntegrationTest.csproj" />
+    <Project Path="tests/Bookly.UnitTest/Blookly.UnitTest.csproj" />
+  </Folder>
+</Solution>

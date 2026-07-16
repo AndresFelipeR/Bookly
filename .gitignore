@@ -1,3 +1,37 @@
-src/Bookly.Application/obj/*
-src/Blookly.Web/obj/Debug/*
-src/Bookly.Domain/obj/*
+# Build
+bin/
+obj/
+
+# Visual Studio
+.vs/
+
+# Rider
+.idea/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# User files
+*.user
+*.suo
+
+# NuGet
+*.nupkg
+
+# Test Results
+TestResults/
+
+# Publish
+publish/
+
+# Coverage
+coverage/
+
+# Rider cache
+_ReSharper*

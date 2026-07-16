@@ -1,0 +1,3 @@
+src/Bookly.Application/obj/*
+src/Blookly.Web/obj/Debug/*
+src/Bookly.Domain/obj/*

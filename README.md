@@ -1,19 +1,41 @@
 # Bookly
 
-Booking management system built with .NET 9 following:
+Booking management system built with .NET 9 following Domain-Driven Design and Clean Architecture.
 
-- Domain Driven Design
-- Clean Architecture
-- CQRS (coming soon)
-- MediatR (coming soon)
+🚧 Work in Progress
+
+## Tech Stack
+
+- .NET 9
+- ASP.NET Core
 - Entity Framework Core
 - SQL Server
+- Clean Architecture
+- Domain-Driven Design (DDD)
+- CQRS (planned)
+- MediatR (planned)
 
-## Current progress
+## Project Structure
 
-- Domain Model
-- Value Objects
-- Entities
-- Business Rules
+src/
+ ├── Bookly.Api
+ ├── Bookly.Application
+ ├── Bookly.Domain
+ ├── Bookly.Infrastructure
 
-- 🚧 Work in progress
+tests/
+ ├── Bookly.Domain.Tests
+ └── Bookly.Application.Tests
+
+## Current Progress
+
+- [x] BaseEntity
+- [x] Value Objects
+- [x] Cliente Aggregate
+- [x] Reserva Aggregate
+- [x] Servicio Aggregate
+- [ ] Domain Events
+- [ ] Repositories
+- [ ] CQRS
+- [ ] EF Core
+- [ ] API

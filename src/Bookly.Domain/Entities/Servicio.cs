@@ -1,4 +1,5 @@
 ﻿using Blookly.Domain.Common;
+using Blookly.Domain.Events;
 using Blookly.Domain.ValueObjects;
 
 namespace Blookly.Domain.Entities;
@@ -39,7 +40,10 @@ public sealed class Servicio : BaseEntity
 
     public static Servicio Create(string nombre, string descripcion, Money precio, TipoServicio tipoServicio, Duracion duracion, PoliticaReserva politicaReserva)
     {
-        return new Servicio(nombre, descripcion, precio, tipoServicio, duracion, politicaReserva);
+         var servicio = new Servicio(nombre, descripcion, precio, tipoServicio, duracion, politicaReserva);
+         servicio.AddDomainEvent( new ServicioCreadoDomainEvent(servicio.Id));
+
+         return servicio;
     }
 
     public void CambiarDescripcion(string nuevaDescripcion)
@@ -62,9 +66,16 @@ public void CambiarNombre(string nuevoNombre)
     public void CambiarPrecio(Money nuevoPrecio)
     {
         ArgumentNullException.ThrowIfNull(nuevoPrecio);
-        if(nuevoPrecio == Precio)
-            return; // No hacer nada si el precio es el mismo
+          if (Precio.Equals(nuevoPrecio))
+        return;
+
+        var precioAnterior = Precio;
         Precio = nuevoPrecio;
+       AddDomainEvent(
+        new ServicioPrecioActualizadoDomainEvent(
+            Id,
+            precioAnterior,
+            nuevoPrecio));
     }
 
     public void CambiarDuracion(Duracion nuevaDuracion)
@@ -93,7 +104,7 @@ public void CambiarNombre(string nuevoNombre)
     {
         ArgumentNullException.ThrowIfNull(nuevoTipoServicio);
 
-        if(nuevoTipoServicio.Id == TipoServicioId)
+        if(TipoServicio.Equals(nuevoTipoServicio))
             throw new InvalidOperationException("El servicio ya pertenece a este tipo de servicio.");
         
         if(!nuevoTipoServicio.State)

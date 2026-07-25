@@ -33,7 +33,7 @@ public sealed class Servicio : BaseEntity
         PoliticaReserva = politicaReserva;
     }
 
-    protected Servicio()
+    private Servicio()
     {
         // Constructor protegido para EF Core
     }

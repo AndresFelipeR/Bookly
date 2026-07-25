@@ -19,7 +19,7 @@ public sealed class TipoServicio : BaseEntity
         
     }
 
-    protected TipoServicio()
+    private TipoServicio()
     {
         // Constructor protegido para EF Core
     }

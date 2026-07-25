@@ -21,7 +21,7 @@ public sealed class Reserva : BaseEntity
         Cliente = cliente;
         ClienteId = cliente.Id;
     }
-    protected Reserva()
+    private Reserva()
     {
         // Constructor protegido para EF Core
     }

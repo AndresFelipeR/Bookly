@@ -5,14 +5,14 @@ namespace Blookly.Domain.Entities;
 
 public sealed class Cliente : BaseEntity
 {
-    public FullName NombreCompleto { get; private set;}
-    public Email Email { get; private set;}
-    public PhoneNumber Telefono {get; private set;}
-    public bool Activo { get; private set;}
+    public FullName NombreCompleto { get; private set;} = null!;
+    public Email Email { get; private set;} = null!;
+    public PhoneNumber Telefono {get; private set;} = null!;
+    public bool Activo { get; private set;} = true;
 
-    protected Cliente()
+    private Cliente()
     {
-        // Constructor protegido para EF Core
+        // Constructor privado para EF Core
     }
 
     private Cliente( FullName nombreCompleto, Email email, PhoneNumber telefono)

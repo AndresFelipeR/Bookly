@@ -3,10 +3,11 @@ using Bookly.Application.Common.Errors;
 using Bookly.Application.Common.Interfaces.Persistence;
 using Bookly.Domain.Entities;
 using Bookly.Domain.ValueObjects;
+using MediatR;
 
 namespace Bookly.Application.Servicios.Commands.Create;
 
-public sealed class CreateServicioCommandHandler
+public sealed class CreateServicioCommandHandler : IRequestHandler<CreateServicioCommand, Result<CreateServicioResponse>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly ITipoServicioRepository _tipoServicioRepository;
@@ -47,15 +48,6 @@ public sealed class CreateServicioCommandHandler
         await _servicioRepository.AddAsync(servicio, cancellationToken);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return Result<CreateServicioResponse>.Success(new CreateServicioResponse(
-            servicio.Id,
-            servicio.Nombre,
-            servicio.Descripcion,
-            servicio.Precio.Amount,
-            servicio.Precio.Currency,
-            servicio.TipoServicioId,
-            servicio.Duracion.TotalMinutes,
-            servicio.PoliticaReserva.MargenCancelacion.TotalMinutes,
-            servicio.PoliticaReserva.MargenAnticipacion.TotalMinutes));
+        return Result<CreateServicioResponse>.Success(CreateServicioResponse.FromServicio(servicio));
     }
 }

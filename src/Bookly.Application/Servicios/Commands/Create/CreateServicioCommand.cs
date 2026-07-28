@@ -1,5 +1,8 @@
 
 
+using Bookly.Application.Common;
+using MediatR;
+
 namespace Bookly.Application.Servicios.Commands.Create;
 
 public sealed record CreateServicioCommand(
@@ -12,4 +15,4 @@ public sealed record CreateServicioCommand(
     int Duracion,
     int MargenCancelacion,
     int MargenAnticipacion
-);
+) : IRequest<Result<CreateServicioResponse>>;

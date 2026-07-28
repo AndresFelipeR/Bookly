@@ -1,5 +1,8 @@
 using Bookly.Application.Common.Interfaces.Persistence;
+using Bookly.Application.Common.Interfaces.Persistence.Queries;
 using Bookly.Infrastructure.Persistence;
+using Bookly.Infrastructure.Persistence.Queries;
+using Bookly.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +19,9 @@ public static class DependencyInjection
         });
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IServicioRepository, ServicioRepository>();
+        services.AddScoped<ITipoServicioRepository, TipoServicioRepository>();
+        services.AddScoped<IServicioQueries, ServicioQueries>();
         return services;
     }
 

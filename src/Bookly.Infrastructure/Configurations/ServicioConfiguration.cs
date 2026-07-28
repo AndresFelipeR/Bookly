@@ -14,6 +14,7 @@ public class ServicioConfiguration : IEntityTypeConfiguration<Servicio>
         builder.ToTable("Servicios");
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).ValueGeneratedOnAdd();
+        builder.HasQueryFilter(x => x.State);
         builder.Property(x => x.Nombre).IsRequired().HasMaxLength(100);
         builder.Property(x => x.Descripcion).HasMaxLength(500);
         
@@ -48,6 +49,8 @@ public class ServicioConfiguration : IEntityTypeConfiguration<Servicio>
                .OnDelete(DeleteBehavior.Restrict);
 
         builder.Property(x => x.State).IsRequired();
+
+        
         
     }
 }

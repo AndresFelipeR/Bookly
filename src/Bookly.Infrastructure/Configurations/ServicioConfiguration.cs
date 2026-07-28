@@ -1,10 +1,10 @@
-﻿using Blookly.Domain.Entities;
+﻿using Bookly.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 
 
-namespace Blookly.Infrastructure.Configurations;
+namespace Bookly.Infrastructure.Configurations;
 
 public class ServicioConfiguration : IEntityTypeConfiguration<Servicio>
 {

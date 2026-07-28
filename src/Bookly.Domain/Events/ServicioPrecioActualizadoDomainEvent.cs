@@ -1,7 +1,7 @@
-﻿using Blookly.Domain.Common;
-using Blookly.Domain.ValueObjects;
+﻿using Bookly.Domain.Common;
+using Bookly.Domain.ValueObjects;
 
-namespace Blookly.Domain.Events;
+namespace Bookly.Domain.Events;
 
 public sealed class ServicioPrecioActualizadoDomainEvent : IDomainEvent
 {

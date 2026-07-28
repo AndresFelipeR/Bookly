@@ -9,11 +9,12 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.10" />
+    <PackageReference Include="Microsoft.OpenApi" Version="2.11.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Bookly.Application\Blookly.Application.csproj" />
-    <ProjectReference Include="..\Bookly.Infrastructure\Blookly.Infrastructure.csproj" />
+    <ProjectReference Include="..\Bookly.Application\Bookly.Application.csproj" />
+    <ProjectReference Include="..\Bookly.Infrastructure\Bookly.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

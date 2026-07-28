@@ -1,4 +1,4 @@
-﻿namespace Blookly.Domain.Common;
+﻿namespace Bookly.Domain.Common;
 
 public interface IDomainEvent
 {

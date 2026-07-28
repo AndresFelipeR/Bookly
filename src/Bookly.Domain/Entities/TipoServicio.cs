@@ -1,6 +1,6 @@
-﻿using Blookly.Domain.Common;
+﻿using Bookly.Domain.Common;
 
-namespace Blookly.Domain.Entities;
+namespace Bookly.Domain.Entities;
 
 public sealed class TipoServicio : BaseEntity
 

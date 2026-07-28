@@ -1,6 +1,6 @@
-﻿using Blookly.Domain.Common;
+﻿using Bookly.Domain.Common;
 
-namespace Blookly.Domain.Events;
+namespace Bookly.Domain.Events;
 
 public sealed class ServicioCreadoDomainEvent : IDomainEvent
 {

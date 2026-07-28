@@ -1,8 +1,8 @@
-﻿using Blookly.Domain.Common;
-using Blookly.Domain.Events;
-using Blookly.Domain.ValueObjects;
+﻿using Bookly.Domain.Common;
+using Bookly.Domain.Events;
+using Bookly.Domain.ValueObjects;
 
-namespace Blookly.Domain.Entities;
+namespace Bookly.Domain.Entities;
 
 public sealed class Servicio : BaseEntity
 {

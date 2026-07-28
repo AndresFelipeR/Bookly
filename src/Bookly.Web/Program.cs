@@ -1,4 +1,4 @@
-using Blookly.Web.Components;
+using Bookly.Web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,7 +1,7 @@
-﻿using Blookly.Domain.Common;
-using Blookly.Domain.Enums;
+﻿using Bookly.Domain.Common;
+using Bookly.Domain.Enums;
 
-namespace Blookly.Domain.Entities;
+namespace Bookly.Domain.Entities;
 
 public sealed class Reserva : BaseEntity
 {

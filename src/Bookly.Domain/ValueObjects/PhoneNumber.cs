@@ -1,6 +1,6 @@
-﻿using Blookly.Domain.Common;
+﻿using Bookly.Domain.Common;
 
-namespace Blookly.Domain.ValueObjects;
+namespace Bookly.Domain.ValueObjects;
 
 public sealed class PhoneNumber : ValueObject
 {

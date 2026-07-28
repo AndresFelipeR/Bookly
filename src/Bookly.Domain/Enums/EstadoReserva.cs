@@ -1,4 +1,4 @@
-﻿namespace Blookly.Domain.Enums;
+﻿namespace Bookly.Domain.Enums;
 
 public enum EstadoReserva
 {

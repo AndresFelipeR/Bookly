@@ -1,4 +1,4 @@
-﻿namespace Blookly.UnitTest;
+﻿namespace Bookly.UnitTest;
 
 public class UnitTest1
 {

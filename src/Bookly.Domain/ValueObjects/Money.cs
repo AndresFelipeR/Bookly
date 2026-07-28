@@ -1,6 +1,6 @@
-﻿using Blookly.Domain.Common;
+﻿using Bookly.Domain.Common;
 
-namespace Blookly.Domain.ValueObjects;
+namespace Bookly.Domain.ValueObjects;
 
 public sealed class Money : ValueObject
 {
@@ -23,6 +23,11 @@ public sealed class Money : ValueObject
 
         Amount = amount;
         Currency = currency.ToUpperInvariant();
+    }
+
+    public static Money Create(decimal amount, string currency)
+    {
+        return new Money(amount, currency);
     }
 
     public Money Add(Money other)

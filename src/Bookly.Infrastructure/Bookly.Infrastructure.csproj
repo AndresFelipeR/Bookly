@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Bookly.Application\Blookly.Application.csproj" />
-    <ProjectReference Include="..\Bookly.Domain\Blookly.Domain.csproj" />
+    <ProjectReference Include="..\Bookly.Application\Bookly.Application.csproj" />
+    <ProjectReference Include="..\Bookly.Domain\Bookly.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

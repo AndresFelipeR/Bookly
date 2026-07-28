@@ -1,7 +1,7 @@
-﻿using Blookly.Domain.Entities;
+﻿using Bookly.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blookly.Infrastructure.Persistence;
+namespace Bookly.Infrastructure.Persistence;
 
 public class BooklyDbContext : DbContext
 {

@@ -1,6 +1,6 @@
-﻿using Blookly.Domain.Common;
+﻿using Bookly.Domain.Common;
 
-namespace Blookly.Application.Common.Interfaces;
+namespace Bookly.Application.Common.Interfaces;
 
 public interface IDomainEventDispatcher
 {

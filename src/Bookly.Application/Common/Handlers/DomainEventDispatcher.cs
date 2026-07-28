@@ -1,9 +1,9 @@
-﻿using Blookly.Application.Common.Interfaces;
-using Blookly.Domain.Common;
-using Blookly.Domain.Events;
+﻿using Bookly.Application.Common.Interfaces;
+using Bookly.Domain.Common;
+using Bookly.Domain.Events;
 using Microsoft.Extensions.Logging;
 
-namespace Blookly.Application.Common.Handlers;
+namespace Bookly.Application.Common.Handlers;
 
 public class DomainEventDispatcher : IDomainEventDispatcher
 {

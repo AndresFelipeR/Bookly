@@ -1,41 +1,138 @@
-# Bookly
+# 📚 Bookly
 
-Booking management system built with .NET 9 following Domain-Driven Design and Clean Architecture.
+Languages
 
-🚧 Work in Progress
+- 🇺🇸 English
+- 🇪🇸 Spanish
+- 🇪🇸 [Leer en español](README.es.md)
 
-## Tech Stack
+Booking Management System built with **.NET 9** following **Clean Architecture**, **Domain-Driven Design (DDD)** and **CQRS** principles.
+
+This project is focused on applying modern backend development practices used in enterprise applications.
+
+> 🚧 Currently under active development.
+
+---
+
+# 🚀 Technologies
 
 - .NET 9
 - ASP.NET Core
 - Entity Framework Core
 - SQL Server
+- MediatR
+- FluentValidation
+- Docker
 - Clean Architecture
 - Domain-Driven Design (DDD)
-- CQRS (planned)
-- MediatR (planned)
+- CQRS
 
-## Project Structure
+---
+
+# 📂 Solution Structure
 
 src/
- ├── Bookly.Api
- ├── Bookly.Application
- ├── Bookly.Domain
- ├── Bookly.Infrastructure
+│
+├── Bookly.Api
+├── Bookly.Application
+├── Bookly.Domain
+└── Bookly.Infrastructure
 
 tests/
- ├── Bookly.Domain.Tests
- └── Bookly.Application.Tests
+│
+├── Bookly.Application.Tests
+└── Bookly.Domain.Tests
 
-## Current Progress
+---
+
+# 🏛 Architecture
+
+This project follows the principles of:
+
+- Clean Architecture
+- Domain-Driven Design (DDD)
+- CQRS
+- Repository Pattern
+- Unit of Work
+- Domain Events
+- Value Objects
+
+---
+
+# ✅ Current Progress
+
+### Domain
 
 - [x] BaseEntity
+- [x] Aggregate Roots
 - [x] Value Objects
-- [x] Cliente Aggregate
-- [x] Reserva Aggregate
-- [x] Servicio Aggregate
-- [ ] Domain Events
-- [ ] Repositories
-- [ ] CQRS
-- [ ] EF Core
-- [ ] API
+- [x] Domain Events
+
+### Entities
+
+- [x] Cliente
+- [x] Reserva
+- [x] Servicio
+- [x] TipoServicio
+
+### Application
+
+- [x] CQRS
+- [x] MediatR
+- [x] FluentValidation
+- [x] Validation Pipeline
+
+### Infrastructure
+
+- [x] Entity Framework Core
+- [x] Repositories
+- [x] Unit of Work
+
+### API
+
+- [ ] Authentication (JWT)
+- [ ] CRUD Endpoints
+- [ ] Swagger Documentation
+
+---
+
+# 📌 Roadmap
+
+- Authentication (JWT)
+- Refresh Tokens
+- Authorization
+- Global Exception Middleware
+- Logging
+- Unit Tests
+- Integration Tests
+- Docker Compose
+- CI/CD
+
+---
+
+# 🎯 Learning Goals
+
+The purpose of this project is to practice enterprise-level backend development using:
+
+- Clean Architecture
+- Domain-Driven Design
+- CQRS
+- MediatR
+- FluentValidation
+- Entity Framework Core
+- SQL Server
+- Docker
+
+---
+
+# 👨‍💻 Author
+
+Andrés Felipe Rojas Hernández
+
+Backend .NET Developer
+
+LinkedIn:
+[https://www.linkedin.com/in/felrojas/]
+
+GitHub:
+https://github.com/AndresFelipeR

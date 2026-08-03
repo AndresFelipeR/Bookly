@@ -4,30 +4,25 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Bookly.Infrastructure.Persistence.Repositories;
 
-public sealed class ServicioRepository : IServicioRepository
+public sealed class ServicioRepository : BaseRepository<Servicio>, IServicioRepository
 {
-    private readonly BooklyDbContext _context;
-
-    public ServicioRepository(BooklyDbContext context)
+   
+    public ServicioRepository(BooklyDbContext context) : base(context) 
     {
-        _context = context;
-    }
-
-    public async Task AddAsync(Servicio servicio, CancellationToken cancellationToken)
-    {
-        await _context.Servicios.AddAsync(servicio, cancellationToken);
+        
     }
 
     public async Task<Servicio?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        return await _context.Servicios
+        return await Context.Servicios
             .Include(x => x.TipoServicio)
             .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
     }
+    
 
     public Task UpdateAsync(Servicio servicio, CancellationToken cancellationToken)
     {
-       _context.Servicios.Update(servicio);
+       Context.Servicios.Update(servicio);
        return Task.CompletedTask;
     }
 

@@ -1,5 +1,7 @@
 # 📚 Bookly
 
+🇬🇧 [Read in English](README.md)
+
 ## Español
 
 Sistema de gestión de reservas desarrollado con **.NET 9** siguiendo los principios de **Clean Architecture**, **Domain-Driven Design (DDD)** y **CQRS**.

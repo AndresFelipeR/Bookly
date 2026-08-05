@@ -8,11 +8,13 @@ public static class DependencyInjection
     {
         services.AddControllers();
         services.AddEndpointsApiExplorer();
-       // services.AddSwaggerGen();
-        
+        services.AddOpenApi();
+
         services.AddExceptionHandler<ValidationExceptionHandler>();
+        services.AddExceptionHandler<NotFoundExceptionHandler>();
+        services.AddExceptionHandler<GlobalExceptionHandler>();
         services.AddProblemDetails();
-        
+
         return services;
     }
 }

@@ -20,7 +20,7 @@ public sealed class ServiciosController : ControllerBase
     {
         var result = await _mediator.Send(command, cancellationToken);
         if(result.IsFailure)
-            return BadRequest(result.Error);
+            return BadRequest(result.Errors);
 
         return CreatedAtAction(
             nameof(GetById),
@@ -33,7 +33,7 @@ public sealed class ServiciosController : ControllerBase
     {
         var result = await _mediator.Send(new GetServicioByIdQuery(id), cancellationToken);
         if (result.IsFailure)
-            return NotFound(result.Error);
+            return NotFound(result.Errors);
 
         return Ok(result.Value);
     }

@@ -15,7 +15,8 @@ public static class DependencyInjection
     {
         services.AddDbContext<BooklyDbContext>(options =>
         {
-            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+            options.UseNpgsql(
+                configuration.GetConnectionString("DefaultConnection"));
         });
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();

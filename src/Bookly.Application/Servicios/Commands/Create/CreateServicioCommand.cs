@@ -15,4 +15,4 @@ public sealed record CreateServicioCommand(
     int Duracion,
     int MargenCancelacion,
     int MargenAnticipacion
-) : IRequest<Result<CreateServicioResponse>>;
+) : IRequest<CreateServicioResponse>;

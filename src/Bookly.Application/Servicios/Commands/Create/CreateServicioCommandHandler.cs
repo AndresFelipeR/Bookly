@@ -1,5 +1,5 @@
-﻿using Bookly.Application.Common;
-using Bookly.Application.Common.Errors;
+﻿using Bookly.Application.Common.Errors;
+using Bookly.Application.Common.Exceptions;
 using Bookly.Application.Common.Interfaces.Persistence;
 using Bookly.Domain.Entities;
 using Bookly.Domain.ValueObjects;
@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Bookly.Application.Servicios.Commands.Create;
 
-public sealed class CreateServicioCommandHandler : IRequestHandler<CreateServicioCommand, Result<CreateServicioResponse>>
+public sealed class CreateServicioCommandHandler : IRequestHandler<CreateServicioCommand, CreateServicioResponse>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly ITipoServicioRepository _tipoServicioRepository;
@@ -23,12 +23,12 @@ public sealed class CreateServicioCommandHandler : IRequestHandler<CreateServici
         _servicioRepository = servicioRepository;
     }
 
-    public async Task<Result<CreateServicioResponse>> Handle(CreateServicioCommand command, CancellationToken cancellationToken)
+    public async Task<CreateServicioResponse> Handle(CreateServicioCommand command, CancellationToken cancellationToken)
     {
         var tipoServicio = await _tipoServicioRepository.GetByIdAsync(command.TipoServicioId, cancellationToken);
         if (tipoServicio is null)
         {
-            return Result<CreateServicioResponse>.Failure(TipoServicioErrors.NotFound(command.TipoServicioId));
+            throw new NotFoundException(TipoServicioErrors.NotFound(command.TipoServicioId));
         }
 
         var precio = Money.Create(command.Amount, command.Currency);
@@ -48,6 +48,6 @@ public sealed class CreateServicioCommandHandler : IRequestHandler<CreateServici
         await _servicioRepository.AddAsync(servicio, cancellationToken);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return Result<CreateServicioResponse>.Success(CreateServicioResponse.FromServicio(servicio));
+        return CreateServicioResponse.FromServicio(servicio);
     }
 }

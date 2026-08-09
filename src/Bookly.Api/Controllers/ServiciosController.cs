@@ -16,25 +16,20 @@ public sealed class ServiciosController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(CreateServicioCommand command, CancellationToken cancellationToken)
+    public async Task<IActionResult> Create([FromBody]CreateServicioCommand command, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(command, cancellationToken);
-        if(result.IsFailure)
-            return BadRequest(result.Errors);
-
+        var response = await _mediator.Send(command, cancellationToken);
         return CreatedAtAction(
             nameof(GetById),
-            new { id = result.Value.Id },
-            result.Value);
+            new { id = response.Id },
+            response);
     }
 
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetById(Guid id, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new GetServicioByIdQuery(id), cancellationToken);
-        if (result.IsFailure)
-            return NotFound(result.Errors);
+        var response = await _mediator.Send(new GetServicioByIdQuery(id), cancellationToken);
 
-        return Ok(result.Value);
+        return Ok(response);
     }
 }

@@ -13,7 +13,7 @@ public class BooklyDbContext : DbContext
     public DbSet<Servicio> Servicios { get; set; } = null!;
     public DbSet<Cliente> Clientes { get; set; } = null!;
     public DbSet<Reserva> Reservas { get; set; } = null!;
-    public DbSet<Empleado> Empleados { get; set; } = null!;
+    //public DbSet<Empleado> Empleados { get; set; } = null!;
     public DbSet<TipoServicio> TiposServicio { get; set; } = null!;
     
 

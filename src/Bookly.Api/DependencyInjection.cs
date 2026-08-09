@@ -12,6 +12,7 @@ public static class DependencyInjection
 
         services.AddExceptionHandler<ValidationExceptionHandler>();
         services.AddExceptionHandler<NotFoundExceptionHandler>();
+        services.AddExceptionHandler<ConflictExceptionHandler>();
         services.AddExceptionHandler<GlobalExceptionHandler>();
         services.AddProblemDetails();
 

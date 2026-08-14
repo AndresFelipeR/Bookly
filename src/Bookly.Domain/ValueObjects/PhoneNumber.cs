@@ -15,7 +15,15 @@ public sealed class PhoneNumber : ValueObject
     {
         if(string.IsNullOrWhiteSpace(value))
             throw new ArgumentException("El numero de telefono no puede estar vacio");
+        
+        if(!value.All(char.IsDigit))
+            throw new ArgumentException("El numero de telefono solo debe contener digitos");
 
         Value = value;
+    }
+
+    public static PhoneNumber Create(string phoneNumber)
+    {
+        return new PhoneNumber(phoneNumber);
     }
 }

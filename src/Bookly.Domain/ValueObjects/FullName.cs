@@ -13,7 +13,7 @@ public sealed class FullName : ValueObject
         yield return Apellido;
     }
 
-    public FullName(string nombre, string apellido)
+    private FullName(string nombre, string apellido)
     {
         if (string.IsNullOrWhiteSpace(nombre))
             throw new ArgumentException("El nombre no puede estar vacío.", nameof(nombre));
@@ -24,4 +24,10 @@ public sealed class FullName : ValueObject
         Nombre = nombre;
         Apellido = apellido;
     }
+    
+    public static FullName Create(string nombre, string apellido){
+        return new FullName(nombre, apellido);
+        
+    }
+    
 }

@@ -11,7 +11,7 @@ public sealed class Email : ValueObject
     {
         yield return Value;
     }
-    public Email(string value)
+    private Email(string value)
     {
         if(string.IsNullOrWhiteSpace(value))
          throw new ArgumentException("El Email no puede estar vacio");
@@ -21,5 +21,10 @@ public sealed class Email : ValueObject
             throw new ArgumentException("El Email no es valido");
 
         Value = value.ToLowerInvariant();
+    }
+
+    public static Email Create(string email)
+    {
+        return new Email(email);
     }
 }

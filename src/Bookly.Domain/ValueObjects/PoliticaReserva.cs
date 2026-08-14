@@ -1,4 +1,5 @@
 ﻿using Bookly.Domain.Common;
+using Bookly.Domain.Exceptions;
 
 namespace Bookly.Domain.ValueObjects;
 
@@ -21,7 +22,7 @@ public sealed class PoliticaReserva : ValueObject
 
 
         if (margenCancelacion.Value > margenAnticipacion.Value)
-            throw new ArgumentException("El margen de cancelación no puede ser mayor que el margen de anticipación.");
+            throw new DomainException("El margen de cancelación no puede ser mayor que el margen de anticipación.");
 
         
         MargenCancelacion = margenCancelacion;

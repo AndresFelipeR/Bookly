@@ -26,6 +26,10 @@ public static class DependencyInjection
         services.AddScoped<ITiposServicioQueries, TiposServicioQueries>();
         services.AddScoped<IClienteQueries, ClienteQueries>();
         services.AddScoped<IClienteRepository, ClienteRepository>();
+        services.AddScoped<IEmpleadoQueries, EmpleadoQueries>();
+        services.AddScoped<IEmpleadoRepository, EmpleadoRepository>();
+        services.AddScoped<IHorarioLaboralQueries, HorarioLaboralQueries>();
+        services.AddScoped<IHorarioLaboralRepository, HorarioLaboralRepository>();
         return services;
     }
 

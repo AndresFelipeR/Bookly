@@ -49,8 +49,5 @@ public class ServicioConfiguration : IEntityTypeConfiguration<Servicio>
                .OnDelete(DeleteBehavior.Restrict);
 
         builder.Property(x => x.State).IsRequired();
-
-        
-        
     }
 }

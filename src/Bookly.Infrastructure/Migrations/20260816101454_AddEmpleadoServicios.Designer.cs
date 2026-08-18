@@ -3,6 +3,7 @@ using System;
 using Bookly.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Bookly.Infrastructure.Migrations
 {
     [DbContext(typeof(BooklyDbContext))]
-    partial class BooklyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260816101454_AddEmpleadoServicios")]
+    partial class AddEmpleadoServicios
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,51 +63,6 @@ namespace Bookly.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Empleados", (string)null);
-                });
-
-            modelBuilder.Entity("Bookly.Domain.Entities.EmpleadoHorarioLaboral", b =>
-                {
-                    b.Property<Guid>("EmpleadoId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("HorarioLaboralId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("EmpleadoId", "HorarioLaboralId");
-
-                    b.HasIndex("HorarioLaboralId");
-
-                    b.ToTable("EmpleadoHorarioLaboral", (string)null);
-                });
-
-            modelBuilder.Entity("Bookly.Domain.Entities.HorarioLaboral", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Descripcion")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("character varying(500)");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.Property<bool>("State")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("HorarioLaboral", (string)null);
                 });
 
             modelBuilder.Entity("Bookly.Domain.Entities.Reserva", b =>
@@ -372,55 +330,6 @@ namespace Bookly.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Bookly.Domain.Entities.EmpleadoHorarioLaboral", b =>
-                {
-                    b.HasOne("Bookly.Domain.Entities.Empleado", null)
-                        .WithMany("HorariosLaborales")
-                        .HasForeignKey("EmpleadoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Bookly.Domain.Entities.HorarioLaboral", "HorarioLaboral")
-                        .WithMany()
-                        .HasForeignKey("HorarioLaboralId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("HorarioLaboral");
-                });
-
-            modelBuilder.Entity("Bookly.Domain.Entities.HorarioLaboral", b =>
-                {
-                    b.OwnsMany("Bookly.Domain.Entities.HorarioLaboralDetalle", "Detalles", b1 =>
-                        {
-                            b1.Property<Guid>("Id")
-                                .HasColumnType("uuid");
-
-                            b1.Property<int>("Dia")
-                                .HasColumnType("integer");
-
-                            b1.Property<TimeOnly>("HoraFin")
-                                .HasColumnType("time");
-
-                            b1.Property<TimeOnly>("HoraInicio")
-                                .HasColumnType("time");
-
-                            b1.Property<Guid>("HorarioLaboralId")
-                                .HasColumnType("uuid");
-
-                            b1.HasKey("Id");
-
-                            b1.HasIndex("HorarioLaboralId");
-
-                            b1.ToTable("HorarioLaboralDetalle", (string)null);
-
-                            b1.WithOwner()
-                                .HasForeignKey("HorarioLaboralId");
-                        });
-
-                    b.Navigation("Detalles");
-                });
-
             modelBuilder.Entity("Bookly.Domain.Entities.Reserva", b =>
                 {
                     b.HasOne("Bookly.Domain.Entities.Cliente", "Cliente")
@@ -559,11 +468,6 @@ namespace Bookly.Infrastructure.Migrations
                         .HasForeignKey("ServicioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Bookly.Domain.Entities.Empleado", b =>
-                {
-                    b.Navigation("HorariosLaborales");
                 });
 #pragma warning restore 612, 618
         }

@@ -7,8 +7,7 @@ public sealed record CreateClienteResponse(
     String Nombre,
     String Apellido,
     string Telefono,
-    string Email,
-    bool Activo
+    string Email
 )
 {
     public static CreateClienteResponse FromCliente(Cliente cliente)
@@ -18,7 +17,6 @@ public sealed record CreateClienteResponse(
             cliente.NombreCompleto.Nombre,
             cliente.NombreCompleto.Apellido,
             cliente.Telefono.Value,
-            cliente.Email.Value,
-            cliente.Activo);
+            cliente.Email.Value);
     }
 }

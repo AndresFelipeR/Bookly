@@ -12,7 +12,6 @@ public class ClienteConfiguration : IEntityTypeConfiguration<Cliente>
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).ValueGeneratedOnAdd();
         builder.HasQueryFilter(x => x.State);
-        builder.Property(x => x.Activo).IsRequired();
         builder.Property(x => x.State).IsRequired();
 
         builder.OwnsOne(x => x.NombreCompleto, nombre =>

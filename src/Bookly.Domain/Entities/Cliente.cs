@@ -8,7 +8,6 @@ public sealed class Cliente : BaseEntity
     public FullName NombreCompleto { get; private set;} = null!;
     public Email Email { get; private set;} = null!;
     public PhoneNumber Telefono {get; private set;} = null!;
-    public bool Activo { get; private set;} = true;
 
     private Cliente()
     {
@@ -26,7 +25,7 @@ public sealed class Cliente : BaseEntity
         NombreCompleto = nombreCompleto;
         Email = email;
         Telefono = telefono;
-        Activo = true;
+        
     }
 
     public static Cliente Create(FullName nombreCompleto, Email email, PhoneNumber telefono)
@@ -36,10 +35,10 @@ public sealed class Cliente : BaseEntity
 
     public void Desactivar()
     {
-        if(!Activo)
+        if(!State)
         return;
 
-        Activo = false;
+        State = false;
     }
 
     public void CambiarEmail(Email nuevoEmail)
@@ -74,10 +73,10 @@ public sealed class Cliente : BaseEntity
 
     public void Activar()
     {
-        if(Activo)
+        if(State)
         return;
 
-        Activo = true;
+        State = true;
     }
 
 }

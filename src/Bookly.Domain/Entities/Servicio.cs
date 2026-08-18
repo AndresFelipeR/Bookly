@@ -15,6 +15,9 @@ public sealed class Servicio : BaseEntity
     public Guid TipoServicioId { get; private set; } // esto es para EF Core, para que pueda mapear la relación con TipoServicio
     public PoliticaReserva PoliticaReserva { get; private set; }
 
+    private readonly List<Empleado> _empleados = new();
+    public IReadOnlyCollection<Empleado> Empleados => _empleados;
+
     private Servicio(string nombre, string descripcion, Money precio, TipoServicio tipoServicio, Duracion duracion, PoliticaReserva politicaReserva)
     {
         ArgumentNullException.ThrowIfNull(nombre);

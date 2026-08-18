@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Bookly.Api.Infrastructure.Exceptions;
 using Bookly.Api.Swagger;
 
@@ -7,7 +8,11 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddPresentation(this IServiceCollection services)
     {
-        services.AddControllers();
+        services.AddControllers()
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            });
         services.AddSwaggerDocumentation();
         services.AddEndpointsApiExplorer();
 

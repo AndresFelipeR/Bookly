@@ -19,7 +19,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
         await Context.Set<T>().AddAsync(entity, cancellationToken);
     }
 
-    public async Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
     {
         return await Context.Set<T>().FindAsync(new object[] { id }, cancellationToken);
     }

@@ -44,7 +44,7 @@ public sealed class AsignarHorarioLaboralEmpleadoCommandHandler
             throw new ConflictException(
                 EmpleadoErrors.HorarioLaboralYaAsignado(request.EmpleadoId, request.HorarioLaboralId));
 
-        empleado.AsignarHorarioLaboral(horarioLaboral);
+        empleado.AsignarHorarioLaboral(horarioLaboral, request.FechaInicio, request.FechaFin);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         return new AsignarHorarioLaboralEmpleadoResponse(empleado.Id, horarioLaboral.Id);

@@ -12,5 +12,13 @@ public sealed class AsignarHorarioLaboralEmpleadoValidator
 
         RuleFor(x => x.HorarioLaboralId)
             .NotEmpty().WithMessage("El horario laboral es requerido");
+
+        RuleFor(x => x.FechaInicio)
+            .NotEmpty().WithMessage("La fecha de inicio es requerida");
+
+        RuleFor(x => x.FechaFin)
+            .GreaterThan(x => x.FechaInicio)
+            .When(x => x.FechaFin.HasValue)
+            .WithMessage("La fecha de fin debe ser posterior a la fecha de inicio");
     }
 }

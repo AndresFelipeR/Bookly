@@ -83,7 +83,7 @@ public class EmpleadosController : ControllerBase
         CancellationToken cancellationToken)
     {
         var response = await _mediator.Send(
-            new AsignarHorarioLaboralEmpleadoCommand(id, request.HorarioLaboralId),
+            new AsignarHorarioLaboralEmpleadoCommand(id, request.HorarioLaboralId, request.FechaInicio, request.FechaFin),
             cancellationToken);
 
         return Ok(response);
@@ -103,4 +103,4 @@ public class EmpleadosController : ControllerBase
 }
 
 public sealed record AsignarServicioRequest(Guid ServicioId);
-public sealed record AsignarHorarioLaboralRequest(Guid HorarioLaboralId);
+public sealed record AsignarHorarioLaboralRequest(Guid HorarioLaboralId, DateOnly FechaInicio, DateOnly? FechaFin);

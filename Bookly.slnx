@@ -8,6 +8,8 @@
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Bookly.IntegrationTest/Bookly.IntegrationTest.csproj" />
-    <Project Path="tests/Bookly.UnitTest/Bookly.UnitTest.csproj" />
+    <Project Path="tests/Bookly.UnitTest/Bookly.UnitTest.csproj">
+      <BuildDependency Project="src/Bookly.Domain/Bookly.Domain.csproj" />
+    </Project>
   </Folder>
 </Solution>

@@ -18,4 +18,8 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Bookly.Domain\Bookly.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

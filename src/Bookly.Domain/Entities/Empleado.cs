@@ -112,14 +112,14 @@ public sealed class Empleado : BaseEntity
         return _servicios.Any(x => x.Id == servicioId);
     }
 
-    public void AsignarHorarioLaboral(HorarioLaboral horarioLaboral)
+    public void AsignarHorarioLaboral(HorarioLaboral horarioLaboral, DateOnly fechaInicio, DateOnly? fechaFin = null)
     {
         ArgumentNullException.ThrowIfNull(horarioLaboral);
 
         if (_horariosLaborales.Any(x => x.HorarioLaboralId == horarioLaboral.Id))
             return;
 
-        _horariosLaborales.Add(EmpleadoHorarioLaboral.Create(Id, horarioLaboral));
+        _horariosLaborales.Add(EmpleadoHorarioLaboral.Create(Id, horarioLaboral, fechaInicio, fechaFin));
     }
 
     public void QuitarHorarioLaboral(HorarioLaboral horarioLaboral)

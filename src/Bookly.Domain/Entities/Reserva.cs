@@ -1,5 +1,6 @@
 ﻿using Bookly.Domain.Common;
 using Bookly.Domain.Enums;
+using Bookly.Domain.Exceptions;
 using Bookly.Domain.ValueObjects;
 
 namespace Bookly.Domain.Entities;
@@ -12,12 +13,15 @@ public sealed class Reserva : BaseEntity
      public Cliente Cliente { get; private set; }
      public Guid ClienteId { get; private set; } // esto es para EF Core, para que pueda mapear la relación con Cliente
      
+     
      public IReadOnlyCollection<ReservaServicio> Servicios => _servicios.AsReadOnly();
      
      public Money PrecioTotal
      {
          get
          {
+            if(_servicios.Count == 0)
+                throw new InvalidOperationException("La reserva no tiene servicios.");
              return _servicios
                  .Select(x => x.Precio)
                  .Aggregate(
@@ -29,6 +33,8 @@ public sealed class Reserva : BaseEntity
      {
          get
          {
+            if(_servicios.Count == 0)
+                throw new InvalidOperationException("La reserva no tiene servicios.");
              var total = _servicios[0].Duracion;
              for (var i = 1; i < _servicios.Count; i++)
              {
@@ -38,14 +44,16 @@ public sealed class Reserva : BaseEntity
          }
      }
 
-    private Reserva( DateTime fechaReserva, Cliente cliente)
+    private Reserva( DateTime fechaReserva, Cliente cliente,ReservaServicio servicio)
     {
         ArgumentNullException.ThrowIfNull(cliente);
+        ArgumentNullException.ThrowIfNull(servicio);
 
         Estado = EstadoReserva.Pendiente; // por defecto la reserva se crea en estado pendiente
         FechaReserva = fechaReserva;
         Cliente = cliente;
         ClienteId = cliente.Id;
+        _servicios.Add(servicio);
     }
 
   
@@ -54,9 +62,10 @@ public sealed class Reserva : BaseEntity
         // Constructor protegido para EF Core
     }
 
-    public static Reserva Create(DateTime fechaReserva, Cliente cliente)
+    public static Reserva Create(DateTime fechaReserva, Cliente cliente, ReservaServicio servicioInicial)
     {
-        return new Reserva(fechaReserva, cliente);
+        ArgumentNullException.ThrowIfNull(servicioInicial);
+        return new Reserva(fechaReserva, cliente, servicioInicial);
     }
 
     public void AgregarServicio(ReservaServicio servicio)
@@ -73,6 +82,8 @@ public sealed class Reserva : BaseEntity
         
         if(servicio is null)
             throw new InvalidOperationException("La servicio no existe en la reserva.");
+        if(_servicios.Count == 1)
+            throw new DomainException("No se puede quitar el único servicio de la reserva.");
         _servicios.Remove(servicio);
     }
 

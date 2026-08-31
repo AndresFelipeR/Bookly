@@ -28,5 +28,10 @@ public class ReservaConfiguration :IEntityTypeConfiguration<Reserva>
             .WithMany()
             .HasForeignKey(x => x.ClienteId)
             .OnDelete(DeleteBehavior.Restrict);
+        
+        builder.HasMany(x => x.Servicios)
+            .WithOne()
+            .HasForeignKey("ReservaId")
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }
